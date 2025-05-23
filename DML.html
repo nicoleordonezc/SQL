@@ -1,0 +1,47 @@
+
+-- DML
+
+INSERT INTO duenos (cedula, nombre_completo, telefono, direccion) VALUES 
+(0912345678, "Carla Jimena Rodríguez Vega", 0987654321, "Av. de las Américas y Calle 10, Guajira, Colombia"),
+(1102457896, "Luis Fernando Almeida Cordero", 0998765432, "Calle Bolívar 345 y Rocafuerte, Bogota, Colombia"),
+(0103569874, "Andrea Paola Castillo Mejía", 0976543210, "Cdla. Miraflores, Mz. 12, Villa 8, Cucuta, Colombia"),
+(1204789653, "Pedro Javier Zambrano López", 0965432109, "Barrio El Paraíso, Calle Los Cipreses, Bucaramanga, Colombia"),
+(0609873214, "Diana Carolina Cedeño Moreira", 0954321098, "Av. 25 de Julio y Callejón 18, Choco, Colombia");
+
+INSERT INTO mascotas (nombre, especie, raza, fecha_nacimiento, sexo, vacunado, id_dueno) VALUES 
+("Max", "Perro", "Labrador Retriever", '2020-1-1', "Macho", "si", 1),
+("Luna", "Gato", "Siames", '2023-2-2', "Hembra", "si", 2),
+("Rocky", "Perro", "Bulldog Frances", '2024-3-3', "Macho", "no", 3),
+("Nala", "Gato", "Persa", '2019-4-4', "Hembra", "si", 4),
+("Toby", "Perro", "Poodle", '2021-5-5', "Macho", "si", 5),
+("Mai", "Gato", "Bengala", '2020-6-6', "Hembra", "no", 1),
+("Zeus", "Perro", "Pastor Aleman", '2018-7-7', "Macho", "si", 2),
+("Kiro", "Gato", "Maine Coon", '2024-8-8', "Macho", "no", 3),
+("Bruno", "Gato", "Angora", '2022-9-9', "Macho", "si", 4),
+("Lila", "Perro", "Beagle", '2017-10-10', "Hembra", "si", 5);
+
+INSERT INTO servicios (nombre, descripcion, precio) VALUES
+("Baño", "Limpieza completa con shampoo especializado para mantener el pelaje limpio y saludable. Incluye secado y cepillado.", 200),
+("Corte de uñas", "Recorte seguro y cuidadoso de las uñas para evitar molestias y posibles lesiones.", 80),
+("Consulta médica", "Revisión general del estado de salud de tu mascota por un médico veterinario.", 300),
+("Desparasitación", "Aplicación de tratamiento antiparasitario interno y/o externo según las necesidades del paciente.", 250),
+("Vacunación", "Aplicación de vacunas esenciales para prevenir enfermedades comunes y mantener al día el esquema de salud.", 450);
+
+INSERT INTO visitas (fecha, id_mascota, id_servicio) VALUES
+('2025-5-1', 1, 1),
+('2025-5-2', 2, 5),
+('2025-5-3', 3, 5),
+('2025-5-4', 4, 4),
+('2025-5-5', 5, 3),
+('2025-5-6', 6, 2),
+('2025-5-7', 7, 2),
+('2025-5-8', 8, 4),
+('2025-5-9', 9, 3),
+('2025-5-10', 10, 1);
+
+INSERT INTO tratamientos (nombre, observaciones, id_visita) VALUES 
+("Hidratación Dermocutánea", "Se recomienda aplicar un acondicionador o hidratante dérmico específico para perros o gatos, especialmente si tienen piel sensible o alergias. Cada 3-4 semanas.", 1),
+("Protect Plus", "Aplicar una lima suave para redondear los bordes de las uñas y evitar que se quiebren o generen molestias al caminar. Revisar y cortar las uñas cada 3-4 semanas para prevenir que se encarnen o causen lesiones.", 6),
+("Suplemento InmuneVet", "Tratamiento con suplementos vitamínicos o inmunoestimulantes naturales. Entre 15-30 días.", 5),
+("Control Parasitario Integral", "limpieza profunda del área donde vive la mascota (cama, juguetes, entorno) para eliminar huevos o larvas residuales.", 4),
+("Refuerzo Vacunal InmunoPet", "Observar al animal por 24 horas ante posibles efectos secundarios como decaimiento o inflamación. Si es cachorro, se deben seguir los refuerzos indicados (a los 15 días o 1 mes).", 3);

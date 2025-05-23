@@ -1,0 +1,51 @@
+-- DDL
+
+DROP DATABASE IF EXISTS Mi_Mejor_Amigo;
+
+CREATE DATABASE IF NOT EXISTS Mi_Mejor_Amigo;
+USE Mi_Mejor_Amigo;
+
+CREATE TABLE duenos (
+	id INT PRIMARY KEY auto_increment,
+	cedula INT NOT NULL,
+    nombre_completo VARCHAR(50) NOT NULL,
+    telefono INT NOT NULL,
+    direccion VARCHAR(55)
+);
+
+CREATE TABLE mascotas (
+	id INT PRIMARY KEY auto_increment,
+    nombre VARCHAR(50) NOT NULL,
+    especie VARCHAR(50) NOT NULL,
+    raza VARCHAR(20) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    sexo VARCHAR(20) NOT NULL,
+    vacunado VARCHAR(20) NOT NULL,
+	id_dueno INT NOT NULL,
+    FOREIGN KEY (id_dueno) References duenos(id) 
+);
+
+CREATE TABLE servicios (
+	id INT PRIMARY KEY auto_increment,
+	nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(200) NOT NULL,
+    precio FLOAT NOT NULL
+);
+
+CREATE TABLE visitas (
+	id INT PRIMARY KEY auto_increment,
+    fecha DATE NOT NULL,
+	id_mascota INT NOT NULL,
+    id_servicio INT NOT NULL,
+    FOREIGN KEY (id_mascota) References mascotas(id),
+    FOREIGN KEY (id_servicio) References servicios(id)
+);
+
+CREATE TABLE tratamientos (
+	id INT PRIMARY KEY auto_increment,
+    nombre VARCHAR(50) NOT NULL,
+    observaciones VARCHAR(300) NOT NULL,
+	id_visita INT NOT NULL,
+    FOREIGN KEY (id_visita) References visitas(id)
+);
+

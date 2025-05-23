@@ -1,0 +1,12 @@
+-- DQL
+
+CREATE TABLE mascota_viejas AS
+SELECT * FROM mascotas
+WHERE especie = "gato";
+
+SELECT nombre_completo AS 'Dueño', telefono AS 'Contácto'
+FROM duenos;
+
+SELECT d.nombre_completo AS 'Dueño', m.nombre as 'Mascota'
+FROM (SELECT * FROM mascotas WHERE especie = "perro") AS m
+JOIN duenos d ON d.id = m.id_dueno;
