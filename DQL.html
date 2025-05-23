@@ -1,12 +1,55 @@
 -- DQL
 
-CREATE TABLE mascota_viejas AS
+CREATE TABLE mascotas_viejas AS
 SELECT * FROM mascotas
-WHERE especie = "gato";
+WHERE especie = 'gato';
 
-SELECT nombre_completo AS 'Dueño', telefono AS 'Contácto'
+SELECT nombre_completo AS Dueño, telefono AS Contácto
 FROM duenos;
 
-SELECT d.nombre_completo AS 'Dueño', m.nombre as 'Mascota'
-FROM (SELECT * FROM mascotas WHERE especie = "perro") AS m
+SELECT d.nombre_completo AS Dueño, m.nombre AS Mascota
+FROM (SELECT * FROM mascotas WHERE especie = 'perro') AS m
 JOIN duenos d ON d.id = m.id_dueno;
+
+SELECT d.nombre_completo, COUNT(*) AS 'Número de mascotas'
+FROM duenos d
+JOIN mascotas m ON d.id = m.id_dueno
+GROUP BY d.nombre_completo;
+
+SELECT COUNT(*) AS 'longevidad de mascotas', 
+MAX(fecha_nacimiento) AS 'fecha más reciente', 
+MIN(fecha_nacimiento) AS 'fecha más reciente',
+FROM mascotas
+
+SELECT CONCAT(m.nombre, ' ---- ', s.nombre) AS 'Mascotas y servicios recibidos'
+FROM visitas v
+JOIN servicios s ON s.id = v.id_servicio
+JOIN mascotas m ON m.id = v.id_mascota ;
+
+SELECT nombre, UPPER(nombre), descripcion, UPPER(descripcion) FROM servicios;
+
+SELECT nombre, LOWER(nombre), sexo, LOWER(sexo) FROM mascotas;
+
+SELECT LENGTH(observaciones), observaciones FROM tratamientos;
+
+SELECT SUBSTRING(nombre_completo, 1, 6), nombre_completo FROM duenos;
+
+SELECT nombre, vacunado,
+IF(vacunado = 'si', 'Vacunado', 'No vacunado') AS Estado
+FROM mascotas;
+
+SELECT ROUND(AVG(precio), 2) FROM servicios;
+
+SELECT nombre, precio,
+IF(precio > 200, 'Costoso', 'Económico') AS 'Valor por servicio'
+FROM servicios;
+
+SELECT * FROM mascotas
+ORDER BY nombre ASC;
+
+CREATE VIEW vista_dueños_mascotas AS
+SELECT d.nombre_completo AS Dueño, m.nombre AS Mascota
+FROM duenos d
+JOIN mascotas m ON m.id_dueno = d.id
+ORDER BY d.nombre_completo;
+
